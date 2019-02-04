@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Complete close tag",
+        "command": "complete_close_tag"
+    }
+]
