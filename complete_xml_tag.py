@@ -18,4 +18,8 @@ class CompleteCloseTagCommand(sublime_plugin.TextCommand):
             self.view.replace(edit, string_region, new_string)
 
     def is_enabled(self):
-        return self.view.match_selector(0, 'text.xml')
+        s = sublime.load_settings('complete_xml_tag.sublime-settings')
+        for selector in s.get('file_selectors', []):
+            if self.view.match_selector(0, selector):
+                return True
+        return False
