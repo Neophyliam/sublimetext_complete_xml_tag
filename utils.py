@@ -5,13 +5,9 @@ open_tag = re.compile(r'<(\w+).*?>')
 close_tag = re.compile(r'</(.*?)>')
 
 
-class InputError(Exception):
-    pass
-
-
 def find_all_tags(string):
     open_tags = list(open_tag.finditer(string))
-    open_tags = [open_tag for open_tag in open_tags 
+    open_tags = [open_tag for open_tag in open_tags
                  if not is_self_close_tag(open_tag)]
     close_tags = list(close_tag.finditer(string))
     all_tags = open_tags + close_tags
@@ -33,6 +29,7 @@ def is_close_tag(tag_obj):
     """
     return tag_obj.group().startswith('</')
 
+
 def is_self_close_tag(tag_obj):
     """
     Test if the match object is a self-close tag. </> counts as a close tag.
@@ -42,8 +39,8 @@ def is_self_close_tag(tag_obj):
 
 def partition_and_replace(string, all_tags):
     """
-    Partition `string` at each </> according to `all_tags`. Complete the </> tag
-    with its tag name. Return a new string without </>.
+    Partition `string` at each </> according to `all_tags`. Complete the </>
+    tag with its tag name. Return a new string without </>.
 
     Note: Self-close tags are not contained in argument `all_tags`.
     """
@@ -53,10 +50,10 @@ def partition_and_replace(string, all_tags):
     for tag in all_tags:
         if is_close_tag(tag):
             if len(tag_stack) == 0:
-                raise InputError('can not find open tag for {}'.
-                    format(tag.group()))
+                raise ValueError('can not find open tag for {}'.
+                                 format(tag.group()))
             if is_close_tag(tag_stack[-1]):
-                raise InputError('duplicated close tag {}'.format(
+                raise ValueError('duplicated close tag {}'.format(
                     tag.group()))
             if tag_name(tag_stack[-1]) == tag_name(tag):
                 tag_stack.pop()
@@ -70,8 +67,8 @@ def partition_and_replace(string, all_tags):
                 start = end
                 tag_stack.pop()
             else:
-                raise InputError('open tag {} and close tag {} does not match'
-                        .format(tag_stack[-1].group(), tag.group()))
+                raise ValueError('open tag {} and close tag {} does not match'
+                                 .format(tag_stack[-1].group(), tag.group()))
         elif is_self_close_tag(tag):
             continue
         else:

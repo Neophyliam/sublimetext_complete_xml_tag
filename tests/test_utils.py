@@ -1,6 +1,5 @@
 import unittest
 
-from utils import InputError
 from utils import find_all_tags, partition_and_replace
 
 
@@ -90,7 +89,7 @@ class TestPartionAndReplace(unittest.TestCase):
         </html>
         '''
         all_tags = find_all_tags(test_string)
-        with self.assertRaises(InputError):
+        with self.assertRaises(ValueError):
             new_string = partition_and_replace(test_string, all_tags)
 
     def test_wrong_string2(self):
@@ -98,11 +97,11 @@ class TestPartionAndReplace(unittest.TestCase):
         <html></a></html>
         '''
         all_tags = find_all_tags(test_string)
-        with self.assertRaises(InputError):
+        with self.assertRaises(ValueError):
             new_string = partition_and_replace(test_string, all_tags)
 
     def test_wrong_string3(self):
         test_string = '''<html></></html>'''
         all_tags = find_all_tags(test_string)
-        with self.assertRaises(InputError):
+        with self.assertRaises(ValueError):
             new_string = partition_and_replace(test_string, all_tags)
