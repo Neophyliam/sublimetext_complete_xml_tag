@@ -1,3 +1,3 @@
 {
-    "file_selectors": ["text.xml", "text.html"]
+    "file_selectors": ["text.xml"]
 }
