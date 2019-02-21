@@ -10,7 +10,7 @@
                 "children":
                 [
                     {
-                        "caption": "Complete close tag",
+                        "caption": "Complete Close Tag",
                         "command": "complete_close_tag"
                     }
                 ]
@@ -28,7 +28,7 @@
                 "children":
                 [
                     {
-                        "caption": "Complete XML tag",
+                        "caption": "Complete XML Tag",
                         "children":
                         [
                             {
