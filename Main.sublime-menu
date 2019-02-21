@@ -33,7 +33,7 @@
                         [
                             {
                                 "command": "open_file",
-                                "args": {"file": "${packages}/complete_xml_tag/complete_xml_tag.sublime-settings"},
+                                "args": {"file": "${packages}/CompleteXmlTag/complete_xml_tag.sublime-settings"},
                                 "caption": "Settings"
                             }
                         ]
