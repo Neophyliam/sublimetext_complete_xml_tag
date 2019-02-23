@@ -32,8 +32,10 @@
                         "children":
                         [
                             {
-                                "command": "open_file",
-                                "args": {"file": "${packages}/CompleteXmlTag/complete_xml_tag.sublime-settings"},
+                                "command": "edit_settings", "args": {
+                                    "base_file": "${packages}/CompleteXmlTag/complete_xml_tag.sublime-settings",
+                                    "default": "{\n    $0\n}\n"
+                                },
                                 "caption": "Settings"
                             }
                         ]
