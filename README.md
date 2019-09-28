@@ -1,5 +1,7 @@
 # SublimeText XML tag completion plugin
 
+![](https://github.com/neothenil/sublimetext_complete_xml_tag/workflows/Unittest/badge.svg)
+
 This plugin is to convert the following XML file
 ```xml
 <html>
